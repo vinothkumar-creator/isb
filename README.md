@@ -19,7 +19,7 @@ A production-ready React Native application built with a **single codebase** for
 - [Building for Production](#building-for-production)
 - [Contributing](#contributing)
 
-## ✨ Features
+##  Features
 
 - ✅ **Single Codebase** - One codebase for Android, iOS, and Web
 - ✅ **MVVM Architecture** - Clean separation of concerns
@@ -30,7 +30,7 @@ A production-ready React Native application built with a **single codebase** for
 - ✅ **Path Aliases** - Clean imports with `@components`, `@screens`, etc.
 - ✅ **Production Ready** - Scalable folder structure
 
-## 🏗️ Architecture
+##  Architecture
 
 ### MVVM Pattern
 
@@ -106,7 +106,7 @@ isb/
 - **Babel** with module-resolver
 - **ESLint** + **Prettier**
 
-## 📦 Prerequisites
+##  Prerequisites
 
 - **Node.js** >= 20
 - **npm** or **yarn**
@@ -114,7 +114,7 @@ isb/
 - For Android: **Android Studio** and **JDK**
 - For Web: Modern browser
 
-## 🚀 Installation
+##  Installation
 
 1. **Clone the repository**
    ```bash
@@ -134,7 +134,7 @@ isb/
    cd ..
    ```
 
-## 🏃 Running the App
+##  Running the App
 
 ### Android
 
@@ -187,7 +187,7 @@ import { CourseCard } from '@components/CourseCard';
 - `@store` → `src/store`
 - `@utils` → `src/utils`
 
-## 🎨 Theming
+##  Theming
 
 The app supports light and dark themes automatically based on system preferences.
 
@@ -235,7 +235,7 @@ export type RootStackParamList = {
 />
 ```
 
-## 📜 Scripts
+##  Scripts
 
 | Script | Description |
 |--------|-------------|
@@ -286,28 +286,28 @@ Format code automatically on save (configure in your IDE) or:
 npx prettier --write "src/**/*.{ts,tsx}"
 ```
 
-## 🧪 Testing
+##  Testing
 
 ```bash
 npm test
 ```
 
-## 🤝 Contributing
+##  Contributing
 
 1. Create a feature branch
 2. Make your changes
 3. Ensure code passes linting and tests
 4. Submit a pull request
 
-## 📄 License
+##  License
 
 [Add your license here]
 
-## 👥 Authors
+##  Authors
 
 [Add authors here]
 
-## 🙏 Acknowledgments
+##  Acknowledgments
 
 - React Native Team
 - React Navigation Team
