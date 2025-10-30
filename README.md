@@ -21,14 +21,14 @@ A production-ready React Native application built with a **single codebase** for
 
 ##  Features
 
-- ✅ **Single Codebase** - One codebase for Android, iOS, and Web
-- ✅ **MVVM Architecture** - Clean separation of concerns
-- ✅ **TypeScript** - Full type safety
-- ✅ **React Navigation** - Robust navigation system
-- ✅ **Theming** - Light/Dark mode support
-- ✅ **Code Quality** - ESLint + Prettier configured
-- ✅ **Path Aliases** - Clean imports with `@components`, `@screens`, etc.
-- ✅ **Production Ready** - Scalable folder structure
+-  **Single Codebase** - One codebase for Android, iOS, and Web
+-  **MVVM Architecture** - Clean separation of concerns
+-  **TypeScript** - Full type safety
+-  **React Navigation** - Robust navigation system
+-  **Theming** - Light/Dark mode support
+-  **Code Quality** - ESLint + Prettier configured
+-  **Path Aliases** - Clean imports with `@components`, `@screens`, etc.
+-  **Production Ready** - Scalable folder structure
 
 ##  Architecture
 
