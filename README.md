@@ -95,7 +95,7 @@ isb/
 └── package.json
 ```
 
-## 🛠️ Tech Stack
+##  Tech Stack
 
 - **React Native** 0.82.1
 - **React** 19.1.1
