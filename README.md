@@ -2,7 +2,7 @@
 
 A production-ready React Native application built with a **single codebase** for **Android, iOS, and Web**, following **MVVM (Model-View-ViewModel)** architecture.
 
-## 📋 Table of Contents
+##  Table of Contents
 
 - [Features](#features)
 - [Architecture](#architecture)
@@ -208,7 +208,7 @@ const MyComponent = () => {
 };
 ```
 
-## 🧭 Navigation
+##  Navigation
 
 Navigation is set up using React Navigation v6 with Stack Navigator.
 
