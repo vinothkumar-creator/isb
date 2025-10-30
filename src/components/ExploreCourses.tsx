@@ -1,6 +1,9 @@
+// ExploreCourses component
 import React from 'react';
 import { View, Text, StyleSheet, ScrollView, TextInput } from 'react-native';
 import CourseCard from './CourseCard';
+import { useTheme } from '@hooks/useTheme';
+import { Spacing } from '@constants/theme';
 
 interface Course {
   id: string;
@@ -12,8 +15,11 @@ interface Course {
 
 const ExploreCourses: React.FC = () => {
   const [searchQuery, setSearchQuery] = React.useState('');
+  const { colors } = useTheme();
 
-  // Sample courses data
+  const styles = createStyles(colors);
+
+  // Sample courses data - In production, this would come from a service/hook
   const allCourses: Course[] = [
     {
       id: '1',
@@ -60,7 +66,7 @@ const ExploreCourses: React.FC = () => {
   ];
 
   const filteredCourses = allCourses.filter(
-    course =>
+    (course) =>
       course.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
       course.instructor.toLowerCase().includes(searchQuery.toLowerCase()),
   );
@@ -80,7 +86,7 @@ const ExploreCourses: React.FC = () => {
           placeholder="Search courses or instructors..."
           value={searchQuery}
           onChangeText={setSearchQuery}
-          placeholderTextColor="#999"
+          placeholderTextColor={colors.textTertiary}
         />
       </View>
 
@@ -89,7 +95,7 @@ const ExploreCourses: React.FC = () => {
         showsVerticalScrollIndicator={false}
       >
         {filteredCourses.length > 0 ? (
-          filteredCourses.map(course => (
+          filteredCourses.map((course) => (
             <CourseCard
               key={course.id}
               title={course.title}
@@ -111,59 +117,60 @@ const ExploreCourses: React.FC = () => {
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#f5f5f5',
-  },
-  header: {
-    paddingHorizontal: 16,
-    paddingTop: 16,
-    paddingBottom: 12,
-    backgroundColor: '#fff',
-    borderBottomWidth: 1,
-    borderBottomColor: '#e0e0e0',
-  },
-  headerTitle: {
-    fontSize: 28,
-    fontWeight: '700',
-    color: '#1a1a1a',
-    marginBottom: 4,
-  },
-  headerSubtitle: {
-    fontSize: 14,
-    color: '#666',
-  },
-  searchContainer: {
-    paddingHorizontal: 16,
-    paddingVertical: 12,
-    backgroundColor: '#fff',
-    borderBottomWidth: 1,
-    borderBottomColor: '#e0e0e0',
-  },
-  searchInput: {
-    backgroundColor: '#f0f0f0',
-    borderRadius: 8,
-    paddingHorizontal: 16,
-    paddingVertical: 12,
-    fontSize: 16,
-    color: '#1a1a1a',
-  },
-  scrollView: {
-    flex: 1,
-    paddingHorizontal: 16,
-    paddingTop: 16,
-  },
-  emptyContainer: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    paddingVertical: 40,
-  },
-  emptyText: {
-    fontSize: 16,
-    color: '#999',
-  },
-});
+const createStyles = (colors: any) =>
+  StyleSheet.create({
+    container: {
+      flex: 1,
+      backgroundColor: colors.surface,
+    },
+    header: {
+      paddingHorizontal: Spacing.md,
+      paddingTop: Spacing.md,
+      paddingBottom: Spacing.sm,
+      backgroundColor: colors.background,
+      borderBottomWidth: 1,
+      borderBottomColor: colors.border,
+    },
+    headerTitle: {
+      fontSize: 28,
+      fontWeight: '700',
+      color: colors.text,
+      marginBottom: 4,
+    },
+    headerSubtitle: {
+      fontSize: 14,
+      color: colors.textSecondary,
+    },
+    searchContainer: {
+      paddingHorizontal: Spacing.md,
+      paddingVertical: Spacing.sm,
+      backgroundColor: colors.background,
+      borderBottomWidth: 1,
+      borderBottomColor: colors.border,
+    },
+    searchInput: {
+      backgroundColor: colors.surface,
+      borderRadius: 8,
+      paddingHorizontal: Spacing.md,
+      paddingVertical: Spacing.sm,
+      fontSize: 16,
+      color: colors.text,
+    },
+    scrollView: {
+      flex: 1,
+      paddingHorizontal: Spacing.md,
+      paddingTop: Spacing.md,
+    },
+    emptyContainer: {
+      flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center',
+      paddingVertical: 40,
+    },
+    emptyText: {
+      fontSize: 16,
+      color: colors.textTertiary,
+    },
+  });
 
 export default ExploreCourses;

@@ -1,97 +1,318 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# ISB Educational Platform
 
-# Getting Started
+A production-ready React Native application built with a **single codebase** for **Android, iOS, and Web**, following **MVVM (Model-View-ViewModel)** architecture.
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+## 📋 Table of Contents
 
-## Step 1: Start Metro
+- [Features](#features)
+- [Architecture](#architecture)
+- [Tech Stack](#tech-stack)
+- [Prerequisites](#prerequisites)
+- [Installation](#installation)
+- [Running the App](#running-the-app)
+- [Project Structure](#project-structure)
+- [Path Aliases](#path-aliases)
+- [MVVM Pattern](#mvvm-pattern)
+- [Theming](#theming)
+- [Navigation](#navigation)
+- [Scripts](#scripts)
+- [Building for Production](#building-for-production)
+- [Contributing](#contributing)
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
+## ✨ Features
 
-To start the Metro dev server, run the following command from the root of your React Native project:
+- ✅ **Single Codebase** - One codebase for Android, iOS, and Web
+- ✅ **MVVM Architecture** - Clean separation of concerns
+- ✅ **TypeScript** - Full type safety
+- ✅ **React Navigation** - Robust navigation system
+- ✅ **Theming** - Light/Dark mode support
+- ✅ **Code Quality** - ESLint + Prettier configured
+- ✅ **Path Aliases** - Clean imports with `@components`, `@screens`, etc.
+- ✅ **Production Ready** - Scalable folder structure
 
-```sh
-# Using npm
-npm start
+## 🏗️ Architecture
 
-# OR using Yarn
-yarn start
+### MVVM Pattern
+
+This project follows the **Model-View-ViewModel (MVVM)** architecture pattern:
+
+- **Model** (`src/api`, `src/services`, `src/store`): Data layer, business logic, and state management
+- **View** (`src/screens`, `src/components`): Presentation layer, UI components
+- **ViewModel** (`src/hooks`, `src/utils`): Logic layer, connects View to Model
+
+### Folder Structure
+
+```
+isb/
+├── android/                 # Android native code
+├── ios/                     # iOS native code
+├── public/                  # Public web assets
+│   └── index.html
+├── src/
+│   ├── api/                 # API client & network layer (Model)
+│   │   ├── client.ts
+│   │   ├── types.ts
+│   │   └── index.ts
+│   ├── assets/              # Images, fonts, icons
+│   ├── components/           # Shared UI components (View)
+│   │   ├── CourseCard.tsx
+│   │   ├── ExploreCourses.tsx
+│   │   └── index.ts
+│   ├── constants/           # Colors, fonts, spacing, configs
+│   │   ├── theme.ts
+│   │   └── index.ts
+│   ├── hooks/               # Custom hooks (ViewModel)
+│   │   ├── useTheme.ts
+│   │   └── index.ts
+│   ├── navigation/          # React Navigation setup
+│   │   ├── AppNavigator.tsx
+│   │   ├── types.ts
+│   │   └── index.ts
+│   ├── screens/             # Screen components (View)
+│   │   ├── HomeScreen.tsx
+│   │   ├── AboutScreen.tsx
+│   │   ├── ExploreCoursesScreen.tsx
+│   │   └── index.ts
+│   ├── services/            # Business logic (Model)
+│   │   ├── CourseService.ts
+│   │   └── index.ts
+│   ├── store/               # Global state (Model)
+│   │   ├── useAppStore.tsx
+│   │   └── index.ts
+│   ├── utils/               # Helper functions (ViewModel)
+│   │   ├── formatting.ts
+│   │   ├── validation.ts
+│   │   └── index.ts
+│   └── AppNavigator.tsx     # Main navigator (legacy - use src/navigation)
+├── App.tsx                  # Root component
+├── index.js                 # Entry point (Android/iOS)
+├── index.web.js             # Entry point (Web)
+├── webpack.config.js         # Webpack config for web builds
+├── babel.config.js          # Babel config with path aliases
+├── tsconfig.json            # TypeScript config
+├── .eslintrc.js             # ESLint config
+├── .prettierrc              # Prettier config
+└── package.json
 ```
 
-## Step 2: Build and run your app
+## 🛠️ Tech Stack
 
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
+- **React Native** 0.82.1
+- **React** 19.1.1
+- **React Native Web** 0.19.13
+- **TypeScript** 5.8.3
+- **React Navigation** 6.1.18
+- **Webpack** 5.96.1
+- **Babel** with module-resolver
+- **ESLint** + **Prettier**
+
+## 📦 Prerequisites
+
+- **Node.js** >= 20
+- **npm** or **yarn**
+- For iOS: **Xcode** and **CocoaPods**
+- For Android: **Android Studio** and **JDK**
+- For Web: Modern browser
+
+## 🚀 Installation
+
+1. **Clone the repository**
+   ```bash
+   git clone <repository-url>
+   cd isb
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **iOS Setup** (macOS only)
+   ```bash
+   cd ios
+   pod install
+   cd ..
+   ```
+
+## 🏃 Running the App
 
 ### Android
 
-```sh
-# Using npm
+```bash
 npm run android
-
-# OR using Yarn
-yarn android
 ```
 
 ### iOS
 
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
-
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
-
-```sh
-bundle install
-```
-
-Then, and every time you update your native dependencies, run:
-
-```sh
-bundle exec pod install
-```
-
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
-
-```sh
-# Using npm
+```bash
 npm run ios
-
-# OR using Yarn
-yarn ios
 ```
 
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
+### Web
 
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
+```bash
+npm run web
+```
 
-## Step 3: Modify your app
+The web app will be available at `http://localhost:3000`
 
-Now that you have successfully run the app, let's make changes!
+### Metro Bundler
 
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
+```bash
+npm start
+```
 
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
+## 🔗 Path Aliases
 
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
+The project uses path aliases for cleaner imports:
 
-## Congratulations! :tada:
+```typescript
+// Instead of
+import { CourseCard } from '../../../components/CourseCard';
 
-You've successfully run and modified your React Native App. :partying_face:
+// Use
+import { CourseCard } from '@components/CourseCard';
+```
 
-### Now what?
+### Available Aliases
 
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
+- `@api` → `src/api`
+- `@assets` → `src/assets`
+- `@components` → `src/components`
+- `@constants` → `src/constants`
+- `@hooks` → `src/hooks`
+- `@navigation` → `src/navigation`
+- `@screens` → `src/screens`
+- `@services` → `src/services`
+- `@store` → `src/store`
+- `@utils` → `src/utils`
 
-# Troubleshooting
+## 🎨 Theming
 
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
+The app supports light and dark themes automatically based on system preferences.
 
-# Learn More
+### Usage
 
-To learn more about React Native, take a look at the following resources:
+```typescript
+import { useTheme } from '@hooks/useTheme';
+import { Colors, Spacing, Typography } from '@constants/theme';
 
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+const MyComponent = () => {
+  const { colors, isDark } = useTheme();
+
+  return (
+    <View style={{ backgroundColor: colors.background }}>
+      <Text style={{ color: colors.text }}>Hello</Text>
+    </View>
+  );
+};
+```
+
+## 🧭 Navigation
+
+Navigation is set up using React Navigation v6 with Stack Navigator.
+
+### Adding a New Screen
+
+1. Create screen component in `src/screens/`
+2. Add route type in `src/navigation/types.ts`
+3. Add screen to `AppNavigator.tsx`
+
+Example:
+
+```typescript
+// src/navigation/types.ts
+export type RootStackParamList = {
+  Home: undefined;
+  NewScreen: { param1: string }; // with params
+};
+
+// src/navigation/AppNavigator.tsx
+<Stack.Screen
+  name="NewScreen"
+  component={NewScreen}
+  options={{ title: 'New Screen' }}
+/>
+```
+
+## 📜 Scripts
+
+| Script | Description |
+|--------|-------------|
+| `npm start` | Start Metro bundler |
+| `npm run android` | Run Android app |
+| `npm run ios` | Run iOS app |
+| `npm run web` | Start web dev server |
+| `npm run build-web` | Build web for production |
+| `npm run lint` | Run ESLint |
+| `npm test` | Run tests |
+
+## 🏭 Building for Production
+
+### Android
+
+```bash
+cd android
+./gradlew assembleRelease
+```
+
+### iOS
+
+1. Open `ios/isb.xcworkspace` in Xcode
+2. Select "Any iOS Device" or specific device
+3. Product → Archive
+
+### Web
+
+```bash
+npm run build-web
+```
+
+Output will be in `web-build/` directory.
+
+## 📝 Code Quality
+
+### ESLint
+
+```bash
+npm run lint
+```
+
+### Prettier
+
+Format code automatically on save (configure in your IDE) or:
+
+```bash
+npx prettier --write "src/**/*.{ts,tsx}"
+```
+
+## 🧪 Testing
+
+```bash
+npm test
+```
+
+## 🤝 Contributing
+
+1. Create a feature branch
+2. Make your changes
+3. Ensure code passes linting and tests
+4. Submit a pull request
+
+## 📄 License
+
+[Add your license here]
+
+## 👥 Authors
+
+[Add authors here]
+
+## 🙏 Acknowledgments
+
+- React Native Team
+- React Navigation Team
+- React Native Web Contributors
+
+---
+
+**Built with ❤️ using React Native**
