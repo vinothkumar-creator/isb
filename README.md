@@ -1,6 +1,6 @@
 # ISB Educational Platform
 
-A production-ready React Native application built with a **single codebase** for **Android, iOS, and Web**, following **MVVM (Model-View-ViewModel)** architecture.
+ React Native application built with a **single codebase** for **Android, iOS, and Web**, following **MVVM (Model-View-ViewModel)** architecture.
 
 ##  Table of Contents
 
